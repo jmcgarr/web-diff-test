@@ -3,7 +3,7 @@ package diff.tester
 class TextField {
 	
 	String content
-	int version
+	int contentVersion
 	
 
     static constraints = {
@@ -11,6 +11,6 @@ class TextField {
     }
 
     String toString() {
-    	"$content (version $version)"
+    	"$content (version $contentVersion)"
     }
 }
