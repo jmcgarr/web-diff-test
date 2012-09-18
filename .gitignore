@@ -1,0 +1,16 @@
+/stacktrace.log
+/web-app/WEB-INF/classes
+*.class
+/.link_to_grails_plugins
+/target
+/target-eclipse
+.settings/
+.project
+.classpath
+cobertura.ser
+CodeNarcReport.html
+*.iml
+*.ipr
+*.iws
+*.tmproj
+/out
