@@ -6,28 +6,22 @@ import name.fraser.neil.plaintext.diff_match_patch.Operation
 
 class DiffService {
 
+	def handler = new diff_match_patch()
 
     def htmlDiff(String original, String replacement) {
-    	String result = new String();
-    	def handler = new diff_match_patch();
+    	def result = new String()
     	LinkedList<Diff> diffs = handler.diff_main(original, replacement)
     	diffs.each { it
     		if (it.operation == Operation.DELETE) {
-    			result = result + "<del>"
-    			result = result + it.text
-    			result = result + "</del>"
+    			result += "<del>" + it.text + "</del>"
     		}
     		else if (it.operation == Operation.INSERT) {
-    			result = result + "<b>"
-    			result = result + it.text
-    			result = result + "</b>"
+    			result += "<b>" + it.text + "</b>"
     		}
     		else {
-    			result = result + it.text
+    			result += it.text
     		}
     	}
-    	println diffs
-    	println result
     	result
     }
 }
