@@ -34,8 +34,14 @@
 			
 				<g:if test="${noteInstance?.textVersions}">
 				<li class="fieldcontain">
-					<span id="textVersions-label" class="property-label"><g:message code="note.textVersions.label" default="Text Versions" /></span>
-					
+					<span id="textVersions-label" class="property-label"><g:message code="note.textVersions.label" default="Text" /></span>
+						<textarea name="textContent" rows="10" cols="50">${noteInstance?.textVersions?.last()?.content}</textarea>
+					</span>
+				</li>
+
+				<li class="fieldcontain">
+					<span id="textVersions-label" class="property-label"><g:message code="note.textVersions.label" default="Version History" /></span>
+
 						<g:each in="${noteInstance.textVersions}" var="t">
 						<span class="property-value" aria-labelledby="textVersions-label"><g:link controller="textField" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
 						</g:each>

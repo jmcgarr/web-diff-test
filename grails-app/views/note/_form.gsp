@@ -15,9 +15,8 @@
 		<g:message code="note.textContent.label" default="Text Content" />
 		
 	</label>
-	<!--g:textArea name="textContent" required="" value="${noteInstance?.textVersions?.get(0)?.content}" /-->
 
-	<textarea name="textContent" rows="10" cols="50">${noteInstance?.textVersions?.get(0)?.content}</textarea>
+	<textarea name="textContent" rows="10" cols="50">${noteInstance?.textVersions?.last()?.content}</textarea>
 	
 </div>
 

@@ -1,4 +1,3 @@
-<%@ page import="diff.tester.Note" %>
 <!DOCTYPE html>
 <html>
 	<head>
