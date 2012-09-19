@@ -25,7 +25,6 @@ class NoteController {
             render(view: "create", model: [noteInstance: noteInstance])
             return
         }
-        //noteInstance.addVersion(params.textContent)
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'note.label', default: 'Note'), noteInstance.id])
         redirect(action: "show", id: noteInstance.id)
@@ -71,7 +70,14 @@ class NoteController {
             }
         }
 
+        
         noteInstance.properties['title'] = params
+
+        // Add a new text version if they are different.  Should move this to a service or separate method.
+        if (!params.textContent.equals(noteInstance.textVersions?.last().content)) {
+	        def nextNum = noteInstance.textVersions?.last()?.contentVersion + 1
+	        noteInstance.addToTextVersions(new TextField(content: params.textContent, contentVersion: nextNum))
+	    }
 
         if (!noteInstance.save(flush: true)) {
             render(view: "edit", model: [noteInstance: noteInstance])
