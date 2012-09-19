@@ -35,8 +35,16 @@
 				<g:if test="${noteInstance?.textVersions}">
 				<li class="fieldcontain">
 					<span id="textVersions-label" class="property-label"><g:message code="note.textVersions.label" default="Text" /></span>
-						<textarea name="textContent" rows="10" cols="50">${noteInstance?.textVersions?.last()?.content}</textarea>
-					</span>
+						<span class="property-value" aria-labelledby="textVersions-label">
+							${noteInstance?.textVersions?.last()?.content}
+						</span>
+				</li>
+
+				<li class="fieldcontain">
+					<span id="textDiff-label" class="property-label"><g:message code="note.textDiff.label" default="Diff" /></span>
+						<span class="property-value" aria-labelledby="textDiff-label">
+							${textDiff}
+						</span>
 				</li>
 
 				<li class="fieldcontain">

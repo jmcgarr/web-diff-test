@@ -6,6 +6,8 @@ class NoteController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+    def diffService
+
     def index() {
         redirect(action: "list", params: params)
     }
@@ -32,13 +34,20 @@ class NoteController {
 
     def show(Long id) {
         def noteInstance = Note.get(id)
+        def diff = ""
         if (!noteInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'note.label', default: 'Note'), id])
             redirect(action: "list")
             return
         }
+        if (noteInstance.textVersions.size() > 1) {
+        	def original = noteInstance.textVersions.toArray()[noteInstance.textVersions.size()-2].content
+        	def replacement = noteInstance.textVersions.last().content
+        	diff = diffService.htmlDiff(original, replacement)
+        	
+        }
 
-        [noteInstance: noteInstance]
+        [noteInstance: noteInstance, textDiff: diff]
     }
 
     def edit(Long id) {
