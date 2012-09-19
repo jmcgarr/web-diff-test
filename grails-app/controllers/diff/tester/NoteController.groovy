@@ -44,7 +44,6 @@ class NoteController {
         	def original = noteInstance.textVersions.toArray()[noteInstance.textVersions.size()-2].content
         	def replacement = noteInstance.textVersions.last().content
         	diff = diffService.htmlDiff(original, replacement)
-        	
         }
 
         [noteInstance: noteInstance, textDiff: diff]
