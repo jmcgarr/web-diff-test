@@ -11,7 +11,7 @@ class TextField implements Comparable {
     }
 
     String toString() {
-    	"$content (version $contentVersion)"
+    	"version $contentVersion"
     }
 
     int compareTo(obj) {
