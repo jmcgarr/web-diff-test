@@ -16,7 +16,7 @@ class TextFieldTests {
     	def log = field.toString()
 
     	// then
-        assertEquals 'this is a string (version 1)', log
+        assertEquals 'version 1', log
     }
 
     @Test void compareTo() {
