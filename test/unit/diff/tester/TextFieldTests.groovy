@@ -18,4 +18,16 @@ class TextFieldTests {
     	// then
         assertEquals 'this is a string (version 1)', log
     }
+
+    @Test void compareTo() {
+    	// given
+    	def first = new TextField(content:'first', contentVersion: 1)
+    	def second = new TextField(content:'second', contentVersion: 2)
+
+    	// when
+
+    	// then
+    	assertEquals (-1, first.compareTo(second))
+    	assertEquals 1, second.compareTo(first)
+    }
 }

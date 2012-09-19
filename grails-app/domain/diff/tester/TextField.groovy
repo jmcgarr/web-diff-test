@@ -1,11 +1,10 @@
 package diff.tester
 
-class TextField {
+class TextField implements Comparable {
 	
 	String 	content
 	int		contentVersion
 	
-
     static constraints = {
 		content(blank:false)
 		contentVersion(nullable:false)
@@ -13,5 +12,9 @@ class TextField {
 
     String toString() {
     	"$content (version $contentVersion)"
+    }
+
+    int compareTo(obj) {
+    	contentVersion.compareTo(obj.contentVersion)
     }
 }
